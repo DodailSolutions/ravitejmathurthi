@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --accent: #6366f1; /* Professional Indigo */
-  --accent-2: #4f46e5;
-  --accent-rgb: 99, 102, 241;
-  --accent-2-rgb: 79, 70, 229;
+  --accent: #ff5b2e; /* Warm editorial orange */
+  --accent-2: #ff8a3d; /* Amber highlight */
+  --accent-rgb: 255, 91, 46;
+  --accent-2-rgb: 255, 138, 61;
 }
 
 @theme {
-  --color-background: #09090b; /* Zinc 950 */
-  --color-surface: #141417; /* Zinc 900 custom */
-  --color-surface-2: #18181b; /* Zinc 900 */
-  --color-foreground: #fafafa; /* Zinc 50 */
-  --color-muted: #a1a1aa; /* Zinc 400 */
-  --color-border: #27272a; /* Zinc 800 */
+  --color-background: #0a0807; /* Warm near-black */
+  --color-surface: #161210; /* Warm charcoal */
+  --color-surface-2: #1d1815; /* Warm charcoal-2 */
+  --color-foreground: #f7f3ee; /* Warm off-white */
+  --color-muted: #a7a097; /* Warm grey */
+  --color-border: #2b2420; /* Warm border */
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
-  --color-gold: #d4af37;
+  --color-gold: #e0b85f;
 
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-serif, Georgia, serif;
 
-  --radius: 0.8rem; /* Cleaner, sharper corners */
+  --radius: 0.9rem;
 }
 
 * {
@@ -79,7 +79,7 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(120deg, #fff 0%, rgba(var(--accent-rgb, 109, 94, 252), 0.7) 40%, var(--accent) 70%, var(--accent-2) 100%);
+  background: linear-gradient(120deg, #f7f3ee 0%, rgba(var(--accent-rgb), 0.7) 40%, var(--accent) 70%, var(--accent-2) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -179,6 +179,48 @@ body {
   animation: ping-dot 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
+/* Animated aurora blobs for a modern, living hero backdrop */
+@keyframes aurora-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(6%, -8%) scale(1.12); }
+  66% { transform: translate(-8%, 5%) scale(0.94); }
+}
+@keyframes aurora-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-7%, 7%) scale(1.06); }
+  66% { transform: translate(8%, -6%) scale(1.12); }
+}
+.animate-aurora-1 { animation: aurora-1 20s ease-in-out infinite; }
+.animate-aurora-2 { animation: aurora-2 26s ease-in-out infinite; }
+
+/* Living, high-contrast shifting gradient for the headline accent */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.headline-gradient {
+  background-image: linear-gradient(
+    110deg,
+    #f7f3ee 0%,
+    #ffd9b0 22%,
+    var(--accent) 48%,
+    #ffd9b0 74%,
+    #f7f3ee 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s ease-in-out infinite;
+}
+
+/* Soft pulsing glow ring for the primary CTA */
+@keyframes cta-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.04); }
+}
+.animate-cta-glow { animation: cta-glow 3.2s ease-in-out infinite; }
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -188,8 +230,21 @@ body {
 }
 
 ::selection {
-  background: rgba(109, 94, 252, 0.4);
+  background: rgba(255, 91, 46, 0.4);
   color: #fff;
+}
+
+/* Editorial italic serif accent for headline emphasis */
+.serif-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Oversized editorial display tracking */
+.display-tight {
+  letter-spacing: -0.02em;
+  line-height: 0.98;
 }
 
 ::-webkit-scrollbar { width: 10px; }
@@ -200,6 +255,76 @@ body {
   border: 2px solid var(--color-background);
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+/* ===== Avatar Animations ===== */
+
+/* Breathing glow pulse behind avatars */
+@keyframes avatar-breathe {
+  0%, 100% { transform: scale(0.92); opacity: 0.3; }
+  50% { transform: scale(1.08); opacity: 0.5; }
+}
+.animate-avatar-breathe {
+  animation: avatar-breathe 4s ease-in-out infinite;
+}
+
+/* Slow rotation for orbit rings */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Orbit dots */
+@keyframes orbit-dot {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+.animate-orbit-dot {
+  animation: orbit-dot 3s ease-in-out infinite;
+}
+.animate-orbit-dot-reverse {
+  animation: orbit-dot 3s ease-in-out infinite 1.5s;
+}
+.animate-orbit-dot-delayed {
+  animation: orbit-dot 3s ease-in-out infinite 0.75s;
+}
+
+/* Floating particles */
+@keyframes float-particle {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
+  25% { transform: translateY(-8px) translateX(3px); opacity: 1; }
+  50% { transform: translateY(-4px) translateX(-2px); opacity: 0.8; }
+  75% { transform: translateY(-12px) translateX(1px); opacity: 0.5; }
+}
+.animate-float-particle {
+  animation: float-particle 4s ease-in-out infinite;
+}
+.animate-float-particle-delayed {
+  animation: float-particle 5s ease-in-out infinite 1s;
+}
+.animate-float-particle-slow {
+  animation: float-particle 6s ease-in-out infinite 2s;
+}
+
+/* Typewriter cursor blink */
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.animate-cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* Floating badge */
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-float-badge {
+  animation: float-badge 3s ease-in-out infinite;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -261,4 +386,101 @@ body {
   outline-offset: 4px !important;
   box-shadow: 0 0 0 6px rgba(var(--accent-rgb), 0.3) !important;
 }
+
+/* ATS-Friendly Resume Print Layouts */
+@media print {
+  @page {
+    margin: 1.2cm 1.5cm;
+    size: A4 portrait;
+  }
+
+  body {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #000000 !important;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide decorative and UI controls */
+  .noise, .noise::after, .bg-grid, .glow, .aura,
+  header, footer, nav, button, .no-print, .print-hidden,
+  .a11y-control-panel, .ping-dot, [role="navigation"],
+  #contact form, .scroll-progress, .pwa-register {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  section {
+    padding: 0 !important;
+    margin: 0 0 1.8rem 0 !important;
+    border: none !important;
+    background: transparent !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000 !important;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+    font-weight: bold !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    background-clip: unset !important;
+    margin: 0 !important;
+  }
+
+  /* Reset layout grids to normal flow */
+  .grid {
+    display: block !important;
+  }
+
+  /* Typography formatting */
+  p, li, span, dt, dd {
+    color: #222222 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.4 !important;
+    background: none !important;
+  }
+
+  /* Remove reveals and transitions */
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  /* Layout and cards formatting */
+  .gradient-border, .glass, .rounded-3xl, .rounded-2xl {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    backdrop-filter: none !important;
+    border-radius: 0 !important;
+  }
+
+  .border-b, .border-t, .border-l {
+    border-color: #dddddd !important;
+  }
+
+  /* Re-align margins for timeline */
+  #experience .pl-6 {
+    padding-left: 0 !important;
+  }
+}
+
 

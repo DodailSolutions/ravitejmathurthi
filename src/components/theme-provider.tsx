@@ -11,9 +11,9 @@ export interface ThemeConfig {
 }
 
 export const themes: Record<AccentTheme, ThemeConfig> = {
-  violet: { name: "Slate Indigo", accent: "#6366f1", accent2: "#4f46e5" },
+  violet: { name: "Editorial Ember", accent: "#ff5b2e", accent2: "#ff8a3d" },
   emerald: { name: "Emerald Mint", accent: "#0d9488", accent2: "#0f766e" },
-  sunset: { name: "Steel Silver", accent: "#71717a", accent2: "#52525b" },
+  sunset: { name: "Warm Clay", accent: "#e2683b", accent2: "#f0a35e" },
   ocean: { name: "Deep Cobalt", accent: "#2563eb", accent2: "#1d4ed8" },
   gold: { name: "Royal Bronze", accent: "#ca8a04", accent2: "#a16207" },
 };

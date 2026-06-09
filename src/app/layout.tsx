@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Inter } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/lib/data";
 import { PWARegister } from "@/components/pwa-register";
 import { ScrollProgress } from "@/components/scroll-progress";
 
-const display = Sora({
+// Editorial serif for display headlines — Valentin Cheval-inspired refined typography
+const display = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const sans = Inter({
@@ -92,34 +93,76 @@ export const viewport: Viewport = {
   ],
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: profile.name,
-  jobTitle: "UX/UI Solutions Consultant",
-  email: profile.email,
-  telephone: profile.phone,
-  url: siteUrl,
-  address: { "@type": "PostalAddress", addressLocality: "Hyderabad", addressCountry: "IN" },
-  worksFor: { "@type": "Organization", name: "Dodail Solutions Pvt Ltd", url: siteUrl },
-  description: profile.summary,
-  knowsAbout: [
-    "Design Systems",
-    "Tailwind CSS",
-    "Shadcn/UI",
-    "Radix UI",
-    "React Aria",
-    "React",
-    "Next.js",
-    "Accessibility (WCAG 2.1)",
-    "Frontend Development",
-    "Mobile-first Responsive Design",
-  ],
-  sameAs: [profile.social.linkedin, profile.social.website],
-};
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${siteUrl}/#person`,
+    "name": profile.name,
+    "jobTitle": "UX/UI Solutions Consultant & Design Systems Architect",
+    "email": profile.email,
+    "telephone": profile.phone,
+    "url": siteUrl,
+    "image": `${siteUrl}/icons/icon-512.png`,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "addressCountry": "IN"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Dodail Solutions Pvt Ltd",
+      "url": siteUrl
+    },
+    "description": profile.summary,
+    "knowsAbout": [
+      "Design Systems",
+      "Tailwind CSS",
+      "Shadcn/UI",
+      "Radix UI",
+      "React Aria",
+      "React",
+      "Next.js",
+      "Accessibility (WCAG 2.1)",
+      "Frontend Development",
+      "Mobile-first Responsive Design",
+      "UX/UI Strategy",
+      "Web Accessibility Compliance",
+      "Power BI Dashboards"
+    ],
+    "sameAs": [
+      profile.social.linkedin,
+      profile.social.website
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    "url": siteUrl,
+    "name": `${profile.name} Portfolio`,
+    "description": "Portfolio of Ravitej Mathurthi — UX/UI Solutions Consultant, Frontend Developer & Design Systems Architect.",
+    "publisher": {
+      "@id": `${siteUrl}/#person`
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${siteUrl}/#profile`,
+    "url": siteUrl,
+    "name": `${profile.name} — UX/UI Solutions Consultant & Design Systems Architect`,
+    "isPartOf": {
+      "@id": `${siteUrl}/#website`
+    },
+    "about": {
+      "@id": `${siteUrl}/#person`
+    }
+  }
+];
 
 import { ThemeProvider } from "@/components/theme-provider";
-import { A11yControlPanel } from "@/components/a11y-control-panel";
 
 
 
@@ -140,7 +183,6 @@ export default function RootLayout({
         <ThemeProvider>
           <ScrollProgress />
           {children}
-          <A11yControlPanel />
           <PWARegister />
         </ThemeProvider>
       </body>

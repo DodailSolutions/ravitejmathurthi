@@ -8,6 +8,8 @@ import { Skills } from "@/components/sections/skills";
 import { Experience } from "@/components/sections/experience";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/footer";
+import { AvatarBuddy } from "@/components/ui/avatar-buddy";
+import { CommandPalette } from "@/components/ui/command-palette";
 
 export default function Home() {
   return (
@@ -24,8 +26,8 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <AvatarBuddy />
+      <CommandPalette />
     </>
   );
 }
-
-

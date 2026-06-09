@@ -20,7 +20,6 @@ export const profile = {
     { value: "10+", label: "Years of experience" },
     { value: "11+", label: "Live products shipped" },
     { value: "WCAG 2.1", label: "Accessibility-first" },
-    { value: "Dodail", label: "Founder & lead" },
   ],
 };
 
@@ -118,6 +117,7 @@ export type Project = {
   tags: string[];
   url: string;
   accent: string;
+  image: string;
 };
 
 export const projects: Project[] = [
@@ -130,6 +130,7 @@ export const projects: Project[] = [
     tags: ["Next.js 14", "Tailwind", "Shadcn/UI", "Supabase"],
     url: "https://billbooky.dodail.com",
     accent: "from-sky-400/20 to-indigo-500/20",
+    image: "/projects/billbooky.png",
   },
   {
     title: "Safe Kids Hospitals",
@@ -140,6 +141,7 @@ export const projects: Project[] = [
     tags: ["React", "Next.js", "WCAG 2.1", "React Aria"],
     url: "https://new.safekidshospitals.com",
     accent: "from-emerald-400/20 to-teal-500/20",
+    image: "/projects/safekids.png",
   },
   {
     title: "Olive Mount Education",
@@ -150,6 +152,7 @@ export const projects: Project[] = [
     tags: ["Design System", "Persona UX", "SEO"],
     url: "https://olivemount.dodail.com",
     accent: "from-violet-400/20 to-fuchsia-500/20",
+    image: "/projects/olivemount.png",
   },
   {
     title: "MagicQR",
@@ -160,6 +163,7 @@ export const projects: Project[] = [
     tags: ["Shadcn/UI", "Analytics", "White-label"],
     url: "https://magicqr.dodail.com",
     accent: "from-amber-400/20 to-orange-500/20",
+    image: "/projects/magicqr.png",
   },
   {
     title: "Rentcot",
@@ -170,6 +174,7 @@ export const projects: Project[] = [
     tags: ["React", "Node.js", "Razorpay", "Performance"],
     url: "https://rentcot.in",
     accent: "from-cyan-400/20 to-blue-500/20",
+    image: "/projects/rentcot.png",
   },
   {
     title: "Dr Woof",
@@ -180,6 +185,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "E-commerce", "Mobile-first"],
     url: "https://drwoof.in",
     accent: "from-rose-400/20 to-pink-500/20",
+    image: "/projects/drwoof.png",
   },
   {
     title: "Mumbaiyaa",
@@ -190,6 +196,7 @@ export const projects: Project[] = [
     tags: ["Tailwind", "Mobile-first", "Accessibility"],
     url: "https://mumbaiyaa.ca",
     accent: "from-orange-400/20 to-red-500/20",
+    image: "/projects/mumbaiyaa.png",
   },
   {
     title: "Zapbed",
@@ -200,6 +207,7 @@ export const projects: Project[] = [
     tags: ["Responsive UI", "Booking Flow", "Dashboards"],
     url: "https://zapbed.com",
     accent: "from-teal-400/20 to-emerald-500/20",
+    image: "/projects/zapbed.png",
   },
 ];
 
@@ -212,19 +220,6 @@ export type Experience = {
 };
 
 export const experience: Experience[] = [
-  {
-    role: "Founder & Senior UX/UI Consultant",
-    company: "Dodail Solutions Pvt Ltd",
-    period: "Sep 2025 — Present",
-    description:
-      "Leading UI/UX architecture using Tailwind CSS, Shadcn/UI, Radix UI & Next.js 14/15 for agency clients across India, UAE, and the USA.",
-    highlights: [
-      "Design and implement scalable, accessible component libraries aligned to WCAG 2.1 — ARIA roles, keyboard navigation, and screen-reader support",
-      "Build and maintain design systems and Tailwind configurations across monorepo-structured SaaS projects",
-      "Optimise React apps for performance — memoization, lazy loading, code splitting, and virtualization",
-      "Implement AI & n8n automation pipelines for client workflows, lead generation, and reporting",
-    ],
-  },
   {
     role: "UI/UX Designer & Power BI Expert",
     company: "Cognizant",

@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const links = [
   { href: "#about", label: "About" },
@@ -58,9 +59,13 @@ export function Navbar() {
         )}
       >
         <a href="#top" suppressHydrationWarning className="flex items-center gap-2 font-display font-semibold tracking-tight">
-          <span className="grid size-8 place-items-center rounded-lg bg-gradient-to-br from-accent to-accent-2 text-sm font-bold text-white">
-            RM
-          </span>
+          <Image
+            src="/avatar.png"
+            alt="Ravitej Mathurthi"
+            width={32}
+            height={32}
+            className="rounded-full border border-white/10 object-cover shadow-sm bg-surface-2"
+          />
           <span className="hidden sm:inline">Ravitej</span>
         </a>
 
@@ -91,15 +96,37 @@ export function Navbar() {
           })}
         </ul>
 
-        <a
-          href="https://cal.com/ravitej-mathurthi/30min"
-          target="_blank"
-          rel="noopener noreferrer"
-          suppressHydrationWarning
-          className="hidden rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-transform hover:scale-[1.03] active:scale-95 md:inline-block"
-        >
-          Let&apos;s talk
-        </a>
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={() => window.dispatchEvent(new Event("open-command-palette"))}
+            suppressHydrationWarning
+            aria-label="Open command palette"
+            className="group flex items-center gap-2 rounded-full border border-border bg-surface/40 px-3 py-2 text-sm text-muted transition-colors hover:border-accent/50 hover:text-foreground print:hidden"
+          >
+            <Search size={14} />
+            <span className="hidden lg:inline">Search</span>
+            <kbd className="hidden items-center gap-0.5 rounded border border-border bg-surface-2 px-1.5 py-0.5 text-[10px] lg:flex">
+              ⌘K
+            </kbd>
+          </button>
+          <a
+            href="/Ravitej-Mathurthi-Resume.pdf"
+            download
+            suppressHydrationWarning
+            className="rounded-full border border-border bg-surface/40 px-4 py-2 text-sm font-medium text-foreground transition-transform hover:scale-[1.03] active:scale-95 cursor-pointer print:hidden"
+          >
+            Resume
+          </a>
+          <a
+            href="https://cal.com/ravitej-mathurthi/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            suppressHydrationWarning
+            className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-transform hover:scale-[1.03] active:scale-95"
+          >
+            Let&apos;s talk
+          </a>
+        </div>
 
         <button
           aria-label="Toggle menu"
@@ -139,6 +166,15 @@ export function Navbar() {
               className="mt-1 block rounded-xl bg-foreground px-4 py-3 text-center font-medium text-background"
             >
               Let&apos;s talk
+            </a>
+            <a
+              href="/Ravitej-Mathurthi-Resume.pdf"
+              download
+              onClick={() => setOpen(false)}
+              suppressHydrationWarning
+              className="mt-2 block w-full rounded-xl border border-border bg-surface/50 px-4 py-3 text-center font-medium text-foreground cursor-pointer print:hidden"
+            >
+              Resume
             </a>
           </motion.div>
         )}

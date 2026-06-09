@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ArrowUpRight, CheckCircle2, ShieldAlert, Sparkles, Building, Globe } from "lucide-react";
 import { Project } from "@/lib/data";
@@ -174,6 +175,25 @@ export function ProjectDrawer({ project, isOpen, onClose }: ProjectDrawerProps) 
 
             {/* Scrollable Content */}
             <div className="flex-1 overflow-y-auto px-6 py-6 space-y-8">
+              {/* Live screenshot banner */}
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-surface-2/40"
+              >
+                <Image
+                  src={project.image}
+                  alt={`${project.title} — live website screenshot`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 672px"
+                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                />
+                <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/55 px-3 py-1 text-xs text-white backdrop-blur opacity-0 transition-opacity group-hover:opacity-100">
+                  Visit live site <ArrowUpRight size={13} />
+                </span>
+              </a>
+
               {/* Domain & Role Indicators */}
               <div className="grid grid-cols-2 gap-4 rounded-2xl border border-border bg-surface-2/40 p-4 text-sm">
                 <div>
