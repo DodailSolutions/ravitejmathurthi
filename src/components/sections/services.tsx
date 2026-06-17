@@ -47,6 +47,13 @@ export function Services() {
           return (
             <Reveal key={s.title} delay={i % 3}>
               <SpotlightCard className="h-full">
+                {/* Oversized editorial index number */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-1 -top-5 select-none font-display text-[5.5rem] font-bold leading-none text-white/[0.04] transition-colors duration-500 group-hover:text-accent/10"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <div
                   className={`mb-4 inline-grid size-11 place-items-center rounded-xl border ${accent.ring} ${accent.text} ${accent.glow} transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:rotate-3`}
                 >

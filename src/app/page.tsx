@@ -10,10 +10,13 @@ import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/footer";
 import { AvatarBuddy } from "@/components/ui/avatar-buddy";
 import { CommandPalette } from "@/components/ui/command-palette";
+import { Cursor } from "@/components/ui/cursor";
+import { Preloader } from "@/components/ui/preloader";
 
 export default function Home() {
   return (
     <>
+      <Preloader />
       <Navbar />
       <main className="flex-1">
         <Hero />
@@ -28,6 +31,7 @@ export default function Home() {
       <Footer />
       <AvatarBuddy />
       <CommandPalette />
+      <Cursor />
     </>
   );
 }

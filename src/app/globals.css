@@ -229,6 +229,110 @@ body {
   animation: marquee 32s linear infinite;
 }
 
+/* Hollow outlined display type for kinetic bands & watermarks */
+.text-outline {
+  -webkit-text-stroke: 1px rgba(247, 243, 238, 0.22);
+  color: transparent;
+  transition: -webkit-text-stroke-color 0.4s ease;
+}
+.text-outline:hover {
+  -webkit-text-stroke-color: rgba(var(--accent-rgb), 0.6);
+}
+
+/* Animated light beam tracing a card's border (featured cards) */
+@property --beam-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes beam-rotate {
+  to { --beam-angle: 360deg; }
+}
+.border-beam {
+  position: relative;
+  isolation: isolate;
+}
+.border-beam::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0%,
+    transparent 78%,
+    rgba(var(--accent-rgb), 0.9) 88%,
+    rgba(var(--accent-2-rgb), 0.9) 94%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: beam-rotate 6s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Shimmering metallic sweep for eyebrow labels */
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}
+.shimmer-text {
+  background: linear-gradient(
+    100deg,
+    var(--accent-2) 20%,
+    #fff1e0 40%,
+    var(--accent-2) 60%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3.5s linear infinite;
+}
+
+/* Animated underline that draws in from the left on hover */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1.5px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Pointer-tracked spotlight overlay for cards */
+.card-spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    340px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(var(--accent-rgb), 0.1),
+    transparent 65%
+  );
+  z-index: 2;
+}
+.card-spotlight:hover::after {
+  opacity: 1;
+}
+
 ::selection {
   background: rgba(255, 91, 46, 0.4);
   color: #fff;

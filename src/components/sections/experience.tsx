@@ -43,14 +43,14 @@ export function Experience() {
             {/* Scroll-animated Foreground Line */}
             <motion.div
               style={{ scaleY }}
-              className="absolute left-0 top-1.5 bottom-1.5 w-[2px] bg-accent origin-top print:hidden"
+              className="absolute left-0 top-1.5 bottom-1.5 w-[2px] origin-top bg-gradient-to-b from-accent via-accent-2 to-accent shadow-[0_0_8px] shadow-accent/50 print:hidden"
             />
 
             {experience.map((e, i) => (
               <Reveal key={e.company} delay={i}>
                 <div className="relative print:page-break-inside-avoid">
                   {/* Timeline Dot */}
-                  <span className="absolute -left-[1.65rem] top-1.5 size-3 rounded-full border-2 border-accent bg-background print:hidden" />
+                  <span className="absolute -left-[1.65rem] top-1.5 size-3 rounded-full border-2 border-accent bg-background shadow-[0_0_12px_2px] shadow-accent/40 print:hidden" />
                   
                   <div className="flex flex-wrap items-baseline justify-between gap-2 print:gap-1">
                     <h4 className="font-display font-semibold text-white print:text-black print:text-sm print:font-bold">{e.role}</h4>

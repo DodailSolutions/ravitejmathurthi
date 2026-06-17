@@ -73,8 +73,9 @@ export function Contact() {
           </span>
         </Reveal>
         <Reveal delay={1}>
-          <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-6xl">
-            Have a product worth <span className="text-gradient">designing well?</span>
+          <h2 className="mt-4 font-display display-tight text-4xl font-semibold sm:text-6xl lg:text-7xl">
+            Have a product worth{" "}
+            <span className="serif-italic headline-gradient">designing well?</span>
           </h2>
         </Reveal>
         <Reveal delay={2}>

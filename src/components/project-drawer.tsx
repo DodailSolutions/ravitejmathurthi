@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useReducedMotion } from "motion/react";
 import { X, ArrowUpRight, CheckCircle2, ShieldAlert, Sparkles, Building, Globe } from "lucide-react";
 import { Project } from "@/lib/data";
 
@@ -95,10 +95,84 @@ const caseStudiesDetails: Record<
     metrics: ["4.8/5.0 booking experience score", "35% faster booking verification", "12k+ rental properties mapped"],
     a11yStandard: "Accessible calendar widgets with screen-reader directions",
   },
+  Viobts: {
+    role: "Lead Solutions Consultant",
+    challenge:
+      "The client needed a scalable portal for managing enterprise cloud resources, IT staffing matching, and real-time team allocation visualization, requiring simple navigation for non-technical managers.",
+    solution:
+      "Developed a responsive dashboard displaying cloud statistics and database integrations. Designed a clean matching flow with virtualized list rendering to handle thousands of candidate profiles under 80ms.",
+    metrics: ["30% increase in placement speed", "95% resource utilization rate", "Under 150ms table rendering latency"],
+    a11yStandard: "Semantic structures for data-rich dashboards and keyboard-navigable filters",
+  },
+  "Mythri Hospital": {
+    role: "Senior UX/UI Consultant",
+    challenge:
+      "Mythri Hospital's existing portal was outdated and non-compliant, causing patients friction when trying to search for doctors, book appointments, or view cashless insurance support.",
+    solution:
+      "Designed a highly accessible, lightweight doctor directory with search and filter capabilities. Implemented clean booking forms, responsive card layouts, and accessible maps for patients.",
+    metrics: ["40% lift in appointment booking", "50% lower home page bounce rate", "100/100 mobile usability score"],
+    a11yStandard: "WCAG 2.1 Level AA color contrast, explicit labels, and focus indicator tracking",
+  },
+  Bidroit: {
+    role: "Lead Product Engineer",
+    challenge:
+      "Procurement bid management requires tracking multiple tenders, RFI documents, and complex vendor evaluations, which were historically managed through fragmented emails and spreadsheets.",
+    solution:
+      "Created Bid Miner and Bidflex 360 dashboards showing live opportunity lists, RFI feedback states, and contracting pipelines. Integrated dynamic visual charts showing win/loss rates.",
+    metrics: ["65% faster tender evaluation cycle", "100+ active vendor profiles tracked", "30% reduction in bid processing costs"],
+    a11yStandard: "High-contrast visual analytics palettes and keyboard-friendly tables",
+  },
+  "Sai Yashoda Dental": {
+    role: "UX Designer & Frontend Developer",
+    challenge:
+      "A multi-location dental clinic group in Hyderabad needed to capture local search traffic, simplify appointment requests across branches, and showcase cosmetic smile restorations.",
+    solution:
+      "Developed a mobile-first appointment booking flow utilizing local cache strategies for branch selections. Implemented responsive before/after slider showcases for treatments.",
+    metrics: ["80% increase in online appointment requests", "50% increase in mobile consultation conversions", "Top 5 local dental search rankings"],
+    a11yStandard: "Screen-reader friendly slider inputs and descriptive images",
+  },
+  "My Dental Attapur": {
+    role: "Lead UI Architect",
+    challenge:
+      "An upscale dental clinic in Attapur required a premium-feeling web portal to attract cosmetic smile design and full-mouth implant patients, requiring high-fidelity visuals.",
+    solution:
+      "Built an elegant, responsive showcase featuring high-resolution cosmetic dental galleries, custom consultation booking flows, and lightweight media assets.",
+    metrics: ["70% lift in cosmetic dentistry inquiries", "1.5s faster mobile load time", "4.9/5.0 Google Review ranking"],
+    a11yStandard: "Semantic outline structures and descriptive alt text for medical galleries",
+  },
+  BillWash: {
+    role: "Lead UI Architect & Founder",
+    challenge:
+      "Detailing shops struggle with manual paper billing, customer tracking, and time-consuming invoicing, leading to errors and slow checkout speeds.",
+    solution:
+      "Architected a mobile-first invoicing SaaS with AI number plate scanning, instant PDF generation, and automated WhatsApp API integrations for real-time digital invoice sharing.",
+    metrics: ["2,400+ Active Wash Shops", "₹4.2 Cr Invoiced Monthly", "Invoices sent under 30 seconds"],
+    a11yStandard: "WCAG 2.1 Level AA compliant high-contrast layouts, forms validation alerts, and screen-reader accessible stats",
+  },
 };
 
 export function ProjectDrawer({ project, isOpen, onClose }: ProjectDrawerProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+
+  // Mouse coords for screenshot hover tilt
+  const imageX = useMotionValue(0.5);
+  const imageY = useMotionValue(0.5);
+
+  const imageRotateX = useSpring(useTransform(imageY, [0, 1], [6, -6]), { stiffness: 180, damping: 20 });
+  const imageRotateY = useSpring(useTransform(imageX, [0, 1], [-6, 6]), { stiffness: 180, damping: 20 });
+
+  function handleImageMove(e: React.MouseEvent<HTMLAnchorElement>) {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    imageX.set((e.clientX - rect.left) / rect.width);
+    imageY.set((e.clientY - rect.top) / rect.height);
+  }
+
+  function handleImageLeave() {
+    imageX.set(0.5);
+    imageY.set(0.5);
+  }
 
   // Lock scroll when drawer is open
   useEffect(() => {
@@ -176,23 +250,45 @@ export function ProjectDrawer({ project, isOpen, onClose }: ProjectDrawerProps) 
             {/* Scrollable Content */}
             <div className="flex-1 overflow-y-auto px-6 py-6 space-y-8">
               {/* Live screenshot banner */}
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-surface-2/40"
-              >
-                <Image
-                  src={project.image}
-                  alt={`${project.title} — live website screenshot`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 672px"
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                />
-                <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/55 px-3 py-1 text-xs text-white backdrop-blur opacity-0 transition-opacity group-hover:opacity-100">
-                  Visit live site <ArrowUpRight size={13} />
-                </span>
-              </a>
+              <div className="w-full" style={{ perspective: 1000 }}>
+                <motion.a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onMouseMove={handleImageMove}
+                  onMouseLeave={handleImageLeave}
+                  style={
+                    reduce
+                      ? undefined
+                      : {
+                          rotateX: imageRotateX,
+                          rotateY: imageRotateY,
+                          transformStyle: "preserve-3d",
+                        }
+                  }
+                  className="group relative block aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-surface-2/40 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-accent/20"
+                >
+                  <div className="absolute inset-0 bg-grid opacity-10" />
+                  <div
+                    className="w-full h-full relative"
+                    style={{ transform: "translateZ(20px)", transformStyle: "preserve-3d" }}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} — live website screenshot`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 672px"
+                      className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    />
+                  </div>
+                  <span
+                    className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/55 px-3 py-1 text-xs text-white backdrop-blur opacity-0 transition-opacity group-hover:opacity-100"
+                    style={{ transform: "translateZ(35px)" }}
+                  >
+                    Visit live site <ArrowUpRight size={13} />
+                  </span>
+                </motion.a>
+              </div>
 
               {/* Domain & Role Indicators */}
               <div className="grid grid-cols-2 gap-4 rounded-2xl border border-border bg-surface-2/40 p-4 text-sm">

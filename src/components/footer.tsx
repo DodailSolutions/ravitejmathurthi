@@ -124,8 +124,16 @@ export function Footer() {
           </Reveal>
         </div>
 
+        {/* Giant watermark signature */}
+        <div aria-hidden className="pointer-events-none relative mt-12 -mb-4 select-none overflow-hidden">
+          <p className="text-outline whitespace-nowrap text-center font-display text-[17vw] font-bold leading-[0.85] tracking-tight md:text-[15vw]">
+            RAVITEJ
+          </p>
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background/90 to-transparent" />
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted/70 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted/70 sm:flex-row">
           <div className="flex items-center gap-2">
             <span className="grid size-6 place-items-center rounded-md bg-gradient-to-br from-accent to-accent-2 text-[9px] font-bold text-white">
               RM

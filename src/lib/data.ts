@@ -209,6 +209,72 @@ export const projects: Project[] = [
     accent: "from-teal-400/20 to-emerald-500/20",
     image: "/projects/zapbed.png",
   },
+  {
+    title: "Viobts",
+    category: "SaaS · IT Consulting",
+    domain: "Enterprise",
+    description:
+      "Strategic cloud enablement, big data analytics dashboards, and AI/ML tech consulting workflows. Managed staffing modules and team allocation flows.",
+    tags: ["Next.js", "Tailwind", "Cloud APIs", "AI Integrations"],
+    url: "https://www.viobts.com",
+    accent: "from-indigo-400/20 to-purple-500/20",
+    image: "/projects/viobts.png",
+  },
+  {
+    title: "Mythri Hospital",
+    category: "Web Portal · Healthcare",
+    domain: "Healthcare",
+    description:
+      "Super-specialty healthcare portal for one of Mehdipatnam's leading hospitals. Integrated doctor directories, department showcases, and cashless insurance guides.",
+    tags: ["React", "Accessible UI", "SEO", "Responsive Layouts"],
+    url: "https://mythrihospital.net",
+    accent: "from-teal-400/20 to-blue-500/20",
+    image: "/projects/mythri.png",
+  },
+  {
+    title: "Bidroit",
+    category: "B2B · Bid Advisory",
+    domain: "FinTech",
+    description:
+      "B2B bid management and procurement consulting platform featuring Bid Miner opportunity tracking, vendor selection dashboards, and contracting tools.",
+    tags: ["Next.js", "Tailwind", "Shadcn/UI", "Dashboards"],
+    url: "https://www.bidroit.com",
+    accent: "from-amber-400/20 to-yellow-500/20",
+    image: "/projects/bidroit.png",
+  },
+  {
+    title: "Sai Yashoda Dental",
+    category: "Web App · Dental Care",
+    domain: "Healthcare",
+    description:
+      "Multi-branch dental clinic network in Hyderabad. Built appointment booking systems, cosmetic smile showcases, and responsive oral care guides.",
+    tags: ["React Aria", "Tailwind CSS", "Mobile-first", "Booking Engine"],
+    url: "https://saiyashodadental.com",
+    accent: "from-sky-400/20 to-cyan-500/20",
+    image: "/projects/saiyashoda.png",
+  },
+  {
+    title: "My Dental Attapur",
+    category: "Web Portal · Dental Care",
+    domain: "Healthcare",
+    description:
+      "High-end dental care web portal with interactive smile makeover galleries, treatment detail pages, and patient consultation booking widgets.",
+    tags: ["Next.js", "A11y focus", "Interactive Showcases", "SEO"],
+    url: "https://www.mydentalhyd.com",
+    accent: "from-emerald-400/20 to-green-500/20",
+    image: "/projects/mydental.png",
+  },
+  {
+    title: "BillWash",
+    category: "SaaS · Invoicing",
+    domain: "FinTech",
+    description:
+      "AI-powered billing and invoicing software for car wash & detailing businesses, featuring automated WhatsApp invoices and AI number plate scanning.",
+    tags: ["Next.js", "Tailwind CSS", "AI Scanning", "WhatsApp API"],
+    url: "https://billwash.dodail.com",
+    accent: "from-orange-500/20 to-red-500/20",
+    image: "/projects/billwash.png",
+  },
 ];
 
 export type Experience = {

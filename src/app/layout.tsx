@@ -177,6 +177,22 @@ export default function RootLayout({
     >
       <body suppressHydrationWarning className="noise flex min-h-full flex-col">
         <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var origError = console.error;
+                console.error = function() {
+                  var msg = Array.prototype.slice.call(arguments).join(' ');
+                  if (msg.indexOf('rtrvr-') !== -1 || msg.indexOf('hydrat') !== -1 || msg.indexOf('mismatch') !== -1) {
+                    return;
+                  }
+                  origError.apply(console, arguments);
+                };
+              })();
+            `
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
