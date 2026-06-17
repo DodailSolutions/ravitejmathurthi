@@ -58,15 +58,15 @@ export function Navbar() {
           scrolled ? "glass shadow-lg shadow-black/30" : "border border-transparent",
         )}
       >
-        <a href="#top" suppressHydrationWarning className="flex items-center gap-2 font-display font-semibold tracking-tight">
+        <a href="#top" suppressHydrationWarning className="flex items-center gap-2.5 font-display font-semibold tracking-tight">
           <Image
-            src="/avatar.png"
-            alt="Ravitej Mathurthi"
-            width={32}
-            height={32}
-            className="rounded-full border border-white/10 object-cover shadow-sm bg-surface-2"
+            src="/icons/icon.svg"
+            alt="Ravitej Logo"
+            width={30}
+            height={30}
+            className="rounded-lg border border-white/10 shadow-sm bg-surface-2"
           />
-          <span className="hidden sm:inline">Ravitej</span>
+          <span>Ravitej</span>
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">
