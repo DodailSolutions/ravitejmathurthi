@@ -8,6 +8,7 @@ import { Skills } from "@/components/sections/skills";
 import { Experience } from "@/components/sections/experience";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/footer";
+import { MobileBottomMenu } from "@/components/mobile-bottom-menu";
 import { AvatarBuddy } from "@/components/ui/avatar-buddy";
 import { CommandPalette } from "@/components/ui/command-palette";
 import { Cursor } from "@/components/ui/cursor";
@@ -18,7 +19,7 @@ export default function Home() {
     <>
       <Preloader />
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 pb-24 md:pb-0">
         <Hero />
         <Marquee />
         <About />
@@ -29,6 +30,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <MobileBottomMenu />
       <AvatarBuddy />
       <CommandPalette />
       <Cursor />

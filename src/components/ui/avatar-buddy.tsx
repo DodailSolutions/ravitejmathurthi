@@ -72,7 +72,7 @@ export function AvatarBuddy() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         onClick={() => { setDismissed(false); setVisible(true); }}
-        className="fixed bottom-6 right-6 z-40 grid size-10 place-items-center rounded-full bg-surface-2 border border-border text-muted hover:text-foreground shadow-lg transition-colors print:hidden cursor-pointer"
+        className="fixed bottom-[88px] md:bottom-6 right-6 z-40 grid size-10 place-items-center rounded-full bg-surface-2 border border-border text-muted hover:text-foreground shadow-lg transition-colors print:hidden cursor-pointer"
         aria-label="Show avatar buddy"
       >
         <MessageCircle size={18} />
@@ -88,7 +88,7 @@ export function AvatarBuddy() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 40, scale: 0.6 }}
           transition={{ type: "spring", stiffness: 260, damping: 22 }}
-          className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2 print:hidden"
+          className="fixed bottom-[88px] md:bottom-6 right-6 z-40 flex flex-col items-end gap-2 print:hidden"
         >
           {/* Speech bubble */}
           <AnimatePresence>
