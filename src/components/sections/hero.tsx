@@ -73,6 +73,7 @@ function Terminal() {
       initial={{ opacity: 0, y: 40, rotateX: 8 }}
       animate={{ opacity: 1, y: 0, rotateX: 0 }}
       transition={{ delay: 0.55, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      suppressHydrationWarning
       className="gradient-border relative w-full overflow-hidden rounded-2xl border border-border bg-[#0d0a09]/90 shadow-2xl shadow-black/50 backdrop-blur [transform-style:preserve-3d]"
     >
       {/* title bar */}
@@ -154,6 +155,7 @@ export function Hero() {
       ref={ref}
       onMouseMove={handleMove}
       id="top"
+      suppressHydrationWarning
       className="relative flex min-h-[100svh] flex-col overflow-hidden px-6 pt-28 pb-10 sm:pt-32 print:min-h-0 print:py-0 print:pt-0 print:block print:overflow-visible"
     >
       <div className="absolute inset-0 bg-grid print:hidden" />
@@ -184,6 +186,7 @@ export function Hero() {
 
       {/* ============ Main: statement + live terminal ============ */}
       <motion.div
+        suppressHydrationWarning
         style={{ opacity: exitOpacity, scale: exitScale }}
         className="relative z-10 mx-auto grid w-full max-w-6xl flex-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 print:hidden"
       >
@@ -276,7 +279,7 @@ export function Hero() {
         </div>
 
         {/* Right: live terminal */}
-        <div className="mx-auto w-full max-w-xl lg:max-w-none">
+        <div className="mx-auto w-full max-w-xl lg:max-w-none" suppressHydrationWarning>
           <Terminal />
         </div>
       </motion.div>

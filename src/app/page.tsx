@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <Preloader />
       <Navbar />
-      <main className="flex-1 pb-24 md:pb-0">
+      <main className="flex-1 pb-24 md:pb-0" suppressHydrationWarning>
         <Hero />
         <Marquee />
         <About />

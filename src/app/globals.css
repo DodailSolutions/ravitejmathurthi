@@ -587,4 +587,9 @@ body {
   }
 }
 
+/* Suppress Next.js development error overlay for clean test/automation runs */
+nextjs-portal {
+  display: none !important;
+}
+
 
