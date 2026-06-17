@@ -21,9 +21,11 @@ export function MobileBottomMenu() {
       className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-32px)] max-w-md -translate-x-1/2 rounded-2xl border border-border/60 bg-background/80 p-2.5 shadow-2xl backdrop-blur-lg md:hidden flex items-center gap-3 transition-transform duration-300"
       role="navigation"
       aria-label="Mobile quick actions"
+      suppressHydrationWarning
     >
       <a
         href="tel:+919490339781"
+        suppressHydrationWarning
         className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-border bg-surface-2/60 py-3 text-sm font-semibold text-foreground transition-all hover:bg-surface-2 active:scale-95 focus:outline-none focus:ring-2 focus:ring-accent"
       >
         <Phone size={15} className="text-accent" />
@@ -33,6 +35,7 @@ export function MobileBottomMenu() {
         href="https://wa.me/919490339781?text=Hi%20Ravitej,%20I%20saw%20your%20portfolio%20and%20wanted%20to%20connect!"
         target="_blank"
         rel="noopener noreferrer"
+        suppressHydrationWarning
         className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-950/20 transition-all hover:bg-emerald-500 active:scale-95 focus:outline-none focus:ring-2 focus:ring-emerald-400"
       >
         <WhatsAppIcon className="size-4" />
