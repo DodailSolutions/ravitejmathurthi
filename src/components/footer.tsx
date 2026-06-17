@@ -3,7 +3,7 @@
 import { profile } from "@/lib/data";
 import { Magnetic } from "@/components/ui/magnetic";
 import { Reveal } from "@/components/ui/reveal";
-import { Mail, Globe, Link2, Phone, ArrowUpRight, Heart } from "lucide-react";
+import { Mail, Globe, Link2, Phone, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 const footerLinks = [
@@ -142,9 +142,6 @@ export function Footer() {
               © {new Date().getFullYear()} {profile.name}. All rights reserved.
             </span>
           </div>
-          <p className="flex items-center gap-1">
-            Crafted with <Heart size={12} className="text-rose-400 fill-rose-400 animate-pulse" /> using Next.js, Tailwind CSS & Motion
-          </p>
         </div>
       </div>
     </footer>
